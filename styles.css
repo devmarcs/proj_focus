@@ -5,6 +5,7 @@
     --fundo-card-timer: rgba(20, 68, 128, 0.30);
     --lils: #B872FF;
     --linear-botes: linear-gradient(180deg, #B872FF 0%, #144480 100%);
+    --cor-texto-link: linear-gradient(180deg, #8B1FF8 0%, #041832 48.44%, #01080E 100%);;
 }
 
 [data-contexto="foco"] {
@@ -110,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .app__card-button.active {
-    border-radius: 0.8rem;
+    border-radius: 0.8rem;      
     background: var(--azul-royal);
     font-weight: 600;
 }
@@ -225,6 +226,11 @@ h1, h2, h3, h4, h5, h6 {
 .toggle-checkbox {
     position: absolute;
     visibility: hidden;
+}
+
+.app__footer-link {
+    text-decoration: none;
+    color: var(--main-bg-color)
 }
 
 /* fim - toggle */
