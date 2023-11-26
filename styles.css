@@ -230,7 +230,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .app__footer-link {
     text-decoration: none;
-    color: var(--main-bg-color)
+    color: var(--main-bg-color);
+    font-size: 1.1em;
+}
+
+.app__link__forte {
+    font-weight: 800;
+    font-style: italic;
+}
+
+.app__footer-link:hover {
+    color: var(--lils);
 }
 
 /* fim - toggle */
