@@ -16,8 +16,8 @@ function criarElementoTarefa(tarefa) {
     </svg>
 `
     const paragrafo = document.createElement('p');
-    paragrafo.classList.add('pp_section-task-list-item-description');
     paragrafo.textContent = tarefa.descricao;
+    paragrafo.classList.add('app__section-task-list-item-description');
 
     const botao = document.createElement('button');
     botao.classList.add('app_button-edit')
@@ -41,8 +41,11 @@ formAddTarefa.addEventListener('submit', (e) => {
         descricao: textAreaForm.value
     }
     tarefas.push(tarefa);
-    localStorage.setItem('tarefas', JSON.stringify(tarefas)
-    );
+    const elementoTarefa = criarElementoTarefa(tarefa);
+    ulTarefas.append(elementoTarefa);
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    textAreaForm.value = '';
+    formAddTarefa.classList.add('hidden');
 })
 
 tarefas.forEach(tarefa => {
