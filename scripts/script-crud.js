@@ -5,6 +5,11 @@ const ulTarefas = document.querySelector('.app__section-task-list');
 
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
 
+function atualizarTarefas(){
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+}
+
+
 function criarElementoTarefa(tarefa) {
     const li = document.createElement('li');
     li.classList.add('app__section-task-list-item');
@@ -43,7 +48,7 @@ formAddTarefa.addEventListener('submit', (e) => {
     tarefas.push(tarefa);
     const elementoTarefa = criarElementoTarefa(tarefa);
     ulTarefas.append(elementoTarefa);
-    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    atualizarTarefas(); 
     textAreaForm.value = '';
     formAddTarefa.classList.add('hidden');
 })
