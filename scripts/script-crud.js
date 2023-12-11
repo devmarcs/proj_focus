@@ -25,7 +25,16 @@ function criarElementoTarefa(tarefa) {
     paragrafo.classList.add('app__section-task-list-item-description');
 
     const botao = document.createElement('button');
-    botao.classList.add('app_button-edit')
+    botao.classList.add('app_button-edit');
+
+    botao.onclick = () => {
+        const novaDescricao = prompt("Qual é o novo nome da tarefa?")
+        paragrafo.textContent = novaDescricao;
+        tarefa.descricao = novaDescricao;
+        atualizarTarefas();
+    }
+
+
     const imagemBotao = document.createElement('img');
     imagemBotao.setAttribute('src', '/imagens/edit.png');
     botao.append(imagemBotao);
@@ -33,7 +42,6 @@ function criarElementoTarefa(tarefa) {
 
     return li;
 }
-
 
 
 btnAddTarefa.addEventListener('click', () => {
