@@ -2,8 +2,14 @@ const btnAddTarefa = document.querySelector('.app__button--add-task');
 const formAddTarefa = document.querySelector('.app__form-add-task');
 const textAreaForm = document.querySelector('.app__form-textarea'); 
 const ulTarefas = document.querySelector('.app__section-task-list');
+const btnCancelar = document.querySelector('.app__form-footer__button--cancel');
+const paragrafoDescricaoTArefa = document.querySelector('.app__section-active-task-description');
 
 const tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+let tarefaSelecionada = null;
+
+
+
 
 function atualizarTarefas(){
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
@@ -27,6 +33,8 @@ function criarElementoTarefa(tarefa) {
     const botao = document.createElement('button');
     botao.classList.add('app_button-edit');
 
+
+
     botao.onclick = () => {
         const novaDescricao = prompt("Qual é o novo nome da tarefa?")
         if (novaDescricao) {
@@ -43,6 +51,23 @@ function criarElementoTarefa(tarefa) {
     botao.append(imagemBotao);
     li.append(svg, paragrafo, botao);
 
+    li.onclick = () => {
+        document.querySelectorAll('.app__section-task-list-item-active')
+            .forEach(e => {
+                e.classList.remove('app__section-task-list-item-active')
+            })
+            
+        if (tarefaSelecionada === tarefa) {
+            paragrafoDescricaoTArefa.textContent = '';
+            tarefaSelecionada = null;
+            return
+        }
+        tarefaSelecionada = tarefa;
+        paragrafoDescricaoTArefa.textContent = tarefa.descricao
+        
+        li.classList.add('app__section-task-list-item-active');
+    }
+
     return li;
 }
 
@@ -50,6 +75,7 @@ function criarElementoTarefa(tarefa) {
 btnAddTarefa.addEventListener('click', () => {
     formAddTarefa.classList.toggle('hidden');
 })
+
 
 formAddTarefa.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -64,7 +90,17 @@ formAddTarefa.addEventListener('submit', (e) => {
     formAddTarefa.classList.add('hidden');
 })
 
+
 tarefas.forEach(tarefa => {
    const elementoTarefa = criarElementoTarefa(tarefa);
    ulTarefas.append(elementoTarefa);
 });
+
+
+
+const limpaTxtArea = () => {
+    textAreaForm.value = '';
+    formAddTarefa.classList.add('hidden');
+}
+
+btnCancelar.addEventListener('click', limpaTxtArea);
