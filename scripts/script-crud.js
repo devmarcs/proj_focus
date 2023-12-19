@@ -104,3 +104,9 @@ const limpaTxtArea = () => {
 }
 
 btnCancelar.addEventListener('click', limpaTxtArea);
+
+document.addEventListener('FocoFinalizado', () => {
+     if (tarefaSelecionada) {
+        
+     }
+})
