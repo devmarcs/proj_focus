@@ -13,7 +13,7 @@ const pausamusic = new Audio('/sons/pause.mp3');
 const playmusic = new Audio('/sons/play.wav');
 const beepFim = new Audio('/sons/beep.mp3');
 const startPauseBt = document.querySelector('#start-pause span');
-let tempoDecorridoemSegundos = 1500;
+let tempoDecorridoemSegundos = 10;
 let intervaloId = null;
 
 musica.loop = true;
